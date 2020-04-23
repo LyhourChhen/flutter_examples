@@ -8,4 +8,4 @@
 |3|Mi Card|The app to show personal Card|Understand how layout working in deep, working with custom font, use some of the widget like profile, card, pedding, row, center, column, text style.|
 |4|Dicc App|Roll the dice app|Unserstand about event handler in flutter like `onpress`, and intro into the basic of state in flutter like definition of stateless and statefull, minipulate the state like setState.
 |5|magic-8-ball|Roll the 8 magic ball game|Practise the same the the dicc app.|
-
+|6|Xelophone|Xelophone app which click to play sound|Understand about the third party use, like audio play, contruct method in flutter|
