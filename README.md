@@ -9,3 +9,7 @@
 |4|Dicc App|Roll the dice app|Unserstand about event handler in flutter like `onpress`, and intro into the basic of state in flutter like definition of stateless and statefull, minipulate the state like setState.
 |5|magic-8-ball|Roll the 8 magic ball game|Practise the same the the dicc app.|
 |6|Xelophone|Xelophone app which click to play sound|Understand about the third party use, like audio play, contruct method in flutter|
+
+
+### More 
+- [Flutter Offical Sample Repo](https://github.com/flutter/samples) - Sample build by offical flutter team.
