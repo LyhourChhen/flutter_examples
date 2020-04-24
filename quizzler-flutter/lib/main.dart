@@ -62,7 +62,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.getQuestionText(trackNumberQuestion),
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -86,10 +86,10 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                checkAnswer(true, quizBrain.getAnswer(trackNumberQuestion));
+                checkAnswer(true, quizBrain.getAnswer());
                 //The user picked true.
                 setState(() {
-                  trackNumberQuestion++;
+                  quizBrain.nextQuestion();
                 });
                 setState(() {
                   scoreKeeper.add(Icon(
@@ -114,13 +114,13 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                checkAnswer(false, quizBrain.getAnswer(trackNumberQuestion));
+                checkAnswer(false, quizBrain.getAnswer());
                 //The user picked false.
 
 //                checkAnswer(
 //                    false, quizBrain.getQuestionText(trackNumberQuestion));
                 setState(() {
-                  trackNumberQuestion++;
+                  quizBrain.nextQuestion();
                 });
                 setState(() {
                   scoreKeeper.add(Icon(
