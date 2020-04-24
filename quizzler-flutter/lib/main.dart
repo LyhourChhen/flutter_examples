@@ -62,7 +62,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.questionBank[trackNumberQuestion].questionText,
+                quizBrain.getQuestionText(trackNumberQuestion),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -86,8 +86,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                checkAnswer(false,
-                    quizBrain.questionBank[trackNumberQuestion].questionAnswer);
+                checkAnswer(true, quizBrain.getAnswer(trackNumberQuestion));
                 //The user picked true.
                 setState(() {
                   trackNumberQuestion++;
@@ -115,10 +114,11 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                checkAnswer(false, quizBrain.getAnswer(trackNumberQuestion));
                 //The user picked false.
 
-                checkAnswer(false,
-                    quizBrain.questionBank[trackNumberQuestion].questionAnswer);
+//                checkAnswer(
+//                    false, quizBrain.getQuestionText(trackNumberQuestion));
                 setState(() {
                   trackNumberQuestion++;
                 });
