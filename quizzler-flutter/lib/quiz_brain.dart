@@ -1,7 +1,8 @@
 import "package:quizzler/Question.dart";
+import "package:rflutter_alert/rflutter_alert.dart";
 
 class QuizBrain {
-  int _questionNumber = 0;
+  int questionNumber = 0;
   List<Question> _questionBank = [
     Question('You can lead a cow down stairs but not up stairs.', false),
     Question('Approximately one quarter of human bones are in the feet.', true),
@@ -31,16 +32,16 @@ class QuizBrain {
 
 //  encapsulation
   getQuestionText() {
-    return _questionBank[_questionNumber].questionText;
+    return _questionBank[questionNumber].questionText;
   }
 
   getAnswer() {
-    return _questionBank[_questionNumber].questionAnswer;
+    return _questionBank[questionNumber].questionAnswer;
   }
 
   void nextQuestion() {
-    if (_questionNumber < _questionBank.length) {
-      _questionNumber++;
+    if (questionNumber < _questionBank.length - 1) {
+      questionNumber++;
     }
   }
 }
