@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.purple,
           scaffoldBackgroundColor: Color(0xFF0A0E21),
           textTheme: TextTheme(body1: TextStyle(color: Colors.white))),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'BMI App'),
     );
   }
 }
