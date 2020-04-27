@@ -22,12 +22,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: reusableCard(
+                    child: ReusableCard(
                       dynamixColor: Color(0xFF1D1E33),
                     ),
                   ),
                   Expanded(
-                    child: reusableCard(
+                    child: ReusableCard(
                       dynamixColor: Color(0xFF1D1E33),
                     ),
                   )
@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Expanded(
-              child: reusableCard(
+              child: ReusableCard(
                 dynamixColor: Color(0xFF1D1E33),
               ),
             ),
@@ -43,12 +43,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: reusableCard(
+                    child: ReusableCard(
                       dynamixColor: Color(0xFF1D1E33),
                     ),
                   ),
                   Expanded(
-                    child: reusableCard(
+                    child: ReusableCard(
                       dynamixColor: Color(0xFF1D1E33),
                     ),
                   )
@@ -62,10 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class reusableCard extends StatelessWidget {
+class ReusableCard extends StatelessWidget {
 //  create Constructor
-  reusableCard({@required this.dynamixColor});
-  Color dynamixColor;
+  ReusableCard({@required this.dynamixColor});
+  final Color dynamixColor;
 
   @override
   Widget build(BuildContext context) {
