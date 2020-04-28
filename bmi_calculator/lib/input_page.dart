@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import "./Widget/CustomCard.dart";
 import "./Widget/CustomCardWithIcon.dart";
 import "./constants.dart";
+import "./Widget/CustomeCardContent.dart";
+import "./result_screen.dart";
 
 enum GENDER { male, female }
 
@@ -39,8 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
 //  Method 2
   GENDER gender;
-
   int height = 180;
+  int weight = 70;
+  int age = 19;
 
   @override
   Widget build(BuildContext context) {
@@ -105,6 +108,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     textBaseline: TextBaseline.alphabetic,
                     children: <Widget>[
                       Text(height.toString(), style: kTextStyle),
+                      SizedBox(
+                        width: 5,
+                      ),
                       Text(
                         "CM",
                         style: kLabelTextStyle,
@@ -140,30 +146,71 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Expanded(
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
                     dynamixColor: kActiveCardColor,
+//                    cardChild: CustomCardContent(
+//                      feature: weight,
+//                      label: "WEIGHT",
+//                      smallLabel: "KG",
+//                      increment: () {
+//                        setState(() {
+//                          weight++;
+//                        });
+//                      },
+//                      decrement: () {
+//                        setState(() {
+//                          weight--;
+//                        });
+//                      },
+//                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     dynamixColor: kActiveCardColor,
+//                    cardChild: CustomCardContent(
+//                      feature: age,
+//                      label: "AGE",
+//                      smallLabel: "OLD",
+//                      increment: () {
+//                        setState(() {
+//                          age++;
+//                        });
+//                      },
+//                      decrement: () {
+//                        setState(() {
+//                          age--;
+//                        });
+//                      },
+//                    ),
                   ),
                 )
               ],
             ),
           ),
-          Container(
-            color: kBottonColorContainer,
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: kBottonContainterHeight,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ResultScreen()));
+            },
+            child: Container(
+              color: kBottonColorContainer,
+              margin: EdgeInsets.only(top: 10),
+              width: double.infinity,
+              height: kBottonContainterHeight,
+              child: Center(
+                child: Text(
+                  "Result",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
           )
         ],
       ),
-
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
