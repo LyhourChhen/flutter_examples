@@ -49,18 +49,20 @@ class CustomCardContent extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FloatingActionButton(
+            RawMaterialButton(
+              constraints: BoxConstraints.tightFor(width: 56, height: 56),
+              shape: CircleBorder(),
               child: Icon(FontAwesomeIcons.plus),
               onPressed: () => increment(),
-              backgroundColor: Color(0xFF8D8E98),
-
-//
+              fillColor: Color(0xFF8D8E98),
             ),
             SizedBox(width: 10),
-            FloatingActionButton(
+            RawMaterialButton(
+              constraints: BoxConstraints.tightFor(width: 56, height: 56),
+              shape: CircleBorder(),
               child: Icon(FontAwesomeIcons.minus),
               onPressed: () => decrement(),
-              backgroundColor: Color(0xFF8D8E98),
+              fillColor: Color(0xFF8D8E98),
 //
             )
           ],

@@ -1,10 +1,11 @@
 import "package:flutter/material.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import "./Widget/CustomCard.dart";
-import "./Widget/CustomCardWithIcon.dart";
+import "./components/CustomCard.dart";
+import "./components/CustomCardWithIcon.dart";
 import "./constants.dart";
-import "./Widget/CustomeCardContent.dart";
+import "./components/CustomeCardContent.dart";
 import "./result_screen.dart";
+import "./components/BottonButton.dart";
 
 enum GENDER { male, female }
 
@@ -151,21 +152,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: ReusableCard(
                     dynamixColor: kActiveCardColor,
-//                    cardChild: CustomCardContent(
-//                      feature: weight,
-//                      label: "WEIGHT",
-//                      smallLabel: "KG",
-//                      increment: () {
-//                        setState(() {
-//                          weight++;
-//                        });
-//                      },
-//                      decrement: () {
-//                        setState(() {
-//                          weight--;
-//                        });
-//                      },
-//                    ),
+                    cardChild: CustomCardContent(
+                      feature: weight,
+                      label: "WEIGHT",
+                      smallLabel: "KG",
+                      increment: () {
+                        setState(() {
+                          weight++;
+                        });
+                      },
+                      decrement: () {
+                        setState(() {
+                          weight--;
+                        });
+                      },
+                    ),
                   ),
                 ),
                 Expanded(
@@ -191,23 +192,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {
+          ButtomBotton(
+            onPress: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ResultScreen()));
             },
-            child: Container(
-              color: kBottonColorContainer,
-              margin: EdgeInsets.only(top: 10),
-              width: double.infinity,
-              height: kBottonContainterHeight,
-              child: Center(
-                child: Text(
-                  "Result",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
+            Label: "Result",
           )
         ],
       ),

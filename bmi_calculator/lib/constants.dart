@@ -7,3 +7,8 @@ const kActiveCardColor = Color(0xFF1D1E33);
 const kInActiveCardColor = Color(0xFF111328);
 const kBottonColorContainer = Color(0xFFEB1555);
 const kTextStyle = TextStyle(fontWeight: FontWeight.w900, fontSize: 50);
+
+const KLargeStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 60);
+
+const KHeaderStyle = TextStyle(
+    fontSize: 22, fontWeight: FontWeight.bold, color: Colors.lightGreenAccent);
