@@ -171,21 +171,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: ReusableCard(
                     dynamixColor: kActiveCardColor,
-//                    cardChild: CustomCardContent(
-//                      feature: age,
-//                      label: "AGE",
-//                      smallLabel: "OLD",
-//                      increment: () {
-//                        setState(() {
-//                          age++;
-//                        });
-//                      },
-//                      decrement: () {
-//                        setState(() {
-//                          age--;
-//                        });
-//                      },
-//                    ),
+                    cardChild: CustomCardContent(
+                      feature: age,
+                      label: "AGE",
+                      smallLabel: "OLD",
+                      increment: () {
+                        setState(() {
+                          age++;
+                        });
+                      },
+                      decrement: () {
+                        setState(() {
+                          age--;
+                        });
+                      },
+                    ),
                   ),
                 )
               ],
