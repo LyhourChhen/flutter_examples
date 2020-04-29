@@ -6,6 +6,7 @@ import "./constants.dart";
 import "./components/CustomeCardContent.dart";
 import "./result_screen.dart";
 import "./components/BottonButton.dart";
+import "./bmi_brain.dart";
 
 enum GENDER { male, female }
 
@@ -194,8 +195,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           ButtomBotton(
             onPress: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ResultScreen()));
+              Bmi_brain bmi = Bmi_brain(height: height, weight: weight);
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ResultScreen(
+                            Calcu: bmi.calculateBMI(),
+                            getInterpreter: bmi.getInterpreter(),
+                            getResult: bmi.getResult(),
+                          )));
             },
             Label: "Result",
           )

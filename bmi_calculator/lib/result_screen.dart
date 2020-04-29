@@ -5,6 +5,13 @@ import "./components/BottonButton.dart";
 import "./input_page.dart";
 
 class ResultScreen extends StatelessWidget {
+  ResultScreen(
+      {@required this.Calcu,
+      @required this.getInterpreter,
+      @required this.getResult});
+  final String Calcu;
+  final String getResult;
+  final String getInterpreter;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,18 +38,18 @@ class ResultScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "You are over Weight !!!",
+                      getResult,
                       style: KHeaderStyle,
                     ),
                     Text(
-                      "19.0",
+                      Calcu,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 70,
                       ),
                     ),
                     Text(
-                      "You should fucking eat more dog",
+                      getInterpreter,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 20,
