@@ -29,6 +29,7 @@ class _PriceScreenState extends State<PriceScreen> {
       onChanged: (value) {
         setState(() {
           selectCurrency = value;
+          getData(value);
         });
       },
       value: selectCurrency,
@@ -59,21 +60,19 @@ class _PriceScreenState extends State<PriceScreen> {
     }
   }
 
-  void getData() async {
-    FetchData fetchData = FetchData(currency: selectCurrency);
+  void getData(inputCurrency) async {
+    FetchData fetchData = FetchData(currency: inputCurrency);
     var data = await fetchData.getData();
     setState(() {
       double value = data["rate"];
       result = value.toString();
     });
-
-    return data;
   }
 
   @override
   void initState() {
     // TODO: implement initState
-    getData();
+    getData(selectCurrency);
   }
 
   @override
