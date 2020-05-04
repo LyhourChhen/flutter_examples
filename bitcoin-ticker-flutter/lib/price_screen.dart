@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import "./coin_data.dart";
+import "package:flutter/cupertino.dart";
+import "dart:io" show Platform;
+import "./fetchData.dart";
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -7,23 +10,72 @@ class PriceScreen extends StatefulWidget {
 }
 
 class _PriceScreenState extends State<PriceScreen> {
-  String selectCurrency;
-<<<<<<< HEAD
-=======
-  List<DropdownMenuItem> getDropDownItems() {
+  String result;
+  String coin;
+  String selectCurrency = "USD";
+
+  DropdownButton<String> AndroidPicker() {
     List<DropdownMenuItem<String>> dropDownItems = [];
-    for (int i = 0; i < currenciesList.length; i++) {
-      String currency = currenciesList[i];
+//    for (int i = 0; i < currenciesList.length; i++) {
+//      String currency = currenciesList[i];
+    for (String currency in currenciesList) {
       var newItems = DropdownMenuItem(
         child: Text(currency),
         value: currency,
       );
       dropDownItems.add(newItems);
     }
-    return dropDownItems;
+    return DropdownButton<String>(
+      onChanged: (value) {
+        setState(() {
+          selectCurrency = value;
+        });
+      },
+      value: selectCurrency,
+      items: dropDownItems,
+    );
   }
 
->>>>>>> 5bcae148b749a34f9904e45ea31df79001a9b117
+  CupertinoPicker IOSPicker() {
+    List<Text> pickterItems = [];
+    for (String currency in currenciesList) {
+      pickterItems.add(Text(currency));
+    }
+    return CupertinoPicker(
+      backgroundColor: Colors.lightBlue,
+      itemExtent: 32.0,
+      onSelectedItemChanged: (selectdIndex) {
+        print(selectdIndex);
+      },
+      children: pickterItems,
+    );
+  }
+
+  Widget getPicker() {
+    if (Platform.isIOS) {
+      return IOSPicker();
+    } else if (Platform.isAndroid) {
+      return AndroidPicker();
+    }
+  }
+
+  void getData() async {
+    FetchData fetchData = FetchData(currency: selectCurrency);
+    var data = await fetchData.getData();
+    setState(() {
+      double value = data["rate"];
+      result = value.toString();
+    });
+
+    return data;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +97,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = ? USD',
+                  '1 BTC = ${result} $selectCurrency',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
@@ -60,25 +112,8 @@ class _PriceScreenState extends State<PriceScreen> {
             alignment: Alignment.center,
             padding: EdgeInsets.only(bottom: 30.0),
             color: Colors.lightBlue,
-            child: DropdownButton<String>(
-              value: selectCurrency,
-<<<<<<< HEAD
-              items: [
-                DropdownMenuItem(
-                  child: Text("USD"),
-                  value: "USD",
-                )
-              ],
-              onChanged: (value) {
-                setState(() {
-                  selectCurrency = value;
-                });
-              },
-=======
-              items: getDropDownItems(),
->>>>>>> 5bcae148b749a34f9904e45ea31df79001a9b117
-            ),
-          ),
+            child: getPicker(),
+          )
         ],
       ),
     );
