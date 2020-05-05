@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "../components/rounded_button.dart";
 
 class RegistrationScreen extends StatefulWidget {
   static String id = "registration_screen";
@@ -76,24 +77,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 24.0,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                elevation: 5.0,
-                child: MaterialButton(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+                child: RoundedButton(
+                  title: "Register",
+                  colour: Colors.red,
                   onPressed: () {
-                    //Implement registration functionality.
+                    print("hi");
                   },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Register',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
+                )),
           ],
         ),
       ),
