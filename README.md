@@ -12,6 +12,7 @@
 
 
 ### More 
+- [brift-sample-flutter](https://www.flutterbyexample.com/) - flutter briftly sample.
 - [flutter-sample](https://github.com/nisrulz/flutter-examples) - flutter sample
 - [Course App Template](https://github.com/londonappbrewery/Flutter-Course-Resources) - Source of Courses Template.
 - [Flutter - sammple](https://github.com/flutter/samples/blob/master/INDEX.md) - sample from flutter team.
