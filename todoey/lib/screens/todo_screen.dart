@@ -17,12 +17,6 @@ class TodoScreen extends StatefulWidget {
 }
 
 class _TodoScreenState extends State<TodoScreen> {
-  List<Task> tasks = [
-    Task(name: "Do Breakfast"),
-    Task(name: "Fix Car"),
-    Task(name: "Finished Course on Udemy")
-  ];
-
   void handleAddTodo(String todo) {
     print("hi");
     setState(() {
@@ -79,7 +73,7 @@ class _TodoScreenState extends State<TodoScreen> {
                         color: Colors.white),
                   ),
                   Text(
-                    "12 Tasks",
+                    "${tasks.length} Tasks",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )
