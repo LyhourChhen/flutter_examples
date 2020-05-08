@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import "../components/todo_list_view.dart";
 import "./create_todo_modal.dart";
+import "../modals/tasks.dart";
 
 class TodoScreen extends StatefulWidget {
   static String id = "todo_screen";
@@ -16,6 +17,20 @@ class TodoScreen extends StatefulWidget {
 }
 
 class _TodoScreenState extends State<TodoScreen> {
+  List<Task> tasks = [
+    Task(name: "Do Breakfast"),
+    Task(name: "Fix Car"),
+    Task(name: "Finished Course on Udemy")
+  ];
+
+  void handleAddTodo(String todo) {
+    print("hi");
+    setState(() {
+      tasks.add(Task(name: todo));
+    });
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +39,10 @@ class _TodoScreenState extends State<TodoScreen> {
         backgroundColor: Colors.redAccent,
         child: Icon(Icons.add),
         onPressed: () => showModalBottomSheet(
-            context: context, builder: (context) => CreateTodo()),
+            context: context,
+            builder: (context) => CreateTodo(
+                  handleAddNewTodo: handleAddTodo,
+                )),
       ),
       body: Container(
         child: SafeArea(
@@ -75,7 +93,9 @@ class _TodoScreenState extends State<TodoScreen> {
                     color: Colors.white,
                     borderRadius:
                         BorderRadius.only(topLeft: Radius.circular(30))),
-                child: TodoListView(),
+                child: TodoListView(
+                  tasks: tasks,
+                ),
               ),
             )
           ],

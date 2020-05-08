@@ -6,11 +6,14 @@
 import "package:flutter/material.dart";
 
 class CreateTodo extends StatefulWidget {
+  final Function handleAddNewTodo;
+  CreateTodo({this.handleAddNewTodo});
   @override
   _CreateTodoState createState() => _CreateTodoState();
 }
 
 class _CreateTodoState extends State<CreateTodo> {
+  String todo;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,6 +35,7 @@ class _CreateTodoState extends State<CreateTodo> {
                   color: Colors.redAccent),
             ),
             TextField(
+              onChanged: (value) => todo = value,
               autofocus: true,
               style: TextStyle(color: Colors.redAccent),
               textAlign: TextAlign.center,
@@ -45,9 +49,10 @@ class _CreateTodoState extends State<CreateTodo> {
             ),
             FlatButton(
               color: Colors.redAccent,
-              onPressed: () => print(
-                "hh",
-              ),
+              onPressed: () {
+                print(todo);
+                widget.handleAddNewTodo(todo);
+              },
               child: Text(
                 "Add",
                 style:

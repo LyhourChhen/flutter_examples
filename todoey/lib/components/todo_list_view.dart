@@ -8,22 +8,28 @@ import "package:flutter/material.dart";
 import "./todo_tile_view.dart";
 import "../modals/tasks.dart";
 
-class TodoListView extends StatelessWidget {
-  List<Task> tasks = [
-    Task(name: "Do Breakfast"),
-    Task(name: "Fix Car"),
-    Task(name: "Finished Course on Udemy")
-  ];
+class TodoListView extends StatefulWidget {
+  final List<Task> tasks;
+  TodoListView({this.tasks});
+  @override
+  _TodoListViewState createState() => _TodoListViewState();
+}
+
+class _TodoListViewState extends State<TodoListView> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        TodoListTiles(
-          title: tasks[0].name,
-          isCheck: true,
-//          handleCheck: ,
-        )
-      ],
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return TodoListTiles(
+            handleCheck: (value) {
+              setState(() {
+                widget.tasks[index].toggleDone();
+              });
+            },
+            title: widget.tasks[index].name,
+            isCheck: widget.tasks[index].isDone);
+      },
+      itemCount: widget.tasks.length,
     );
   }
 }
