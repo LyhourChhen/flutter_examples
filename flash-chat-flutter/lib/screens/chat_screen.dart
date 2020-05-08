@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
 import "package:firebase_auth/firebase_auth.dart";
@@ -15,6 +16,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final _firestore = Firestore.instance;
   FirebaseUser logginUser;
   String chatText;
+  final messageTextController = TextEditingController();
 
   void getCurrentUser() async {
     try {
@@ -30,8 +32,17 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void getMessage() async {
     final messages = await _firestore.collection('messages').getDocuments();
+    print("it should be renderrrrrrrrrr here");
     for (var mess in messages.documents) {
-      print(mess);
+      print(mess.data);
+    }
+  }
+
+  void getSteamMessage() async {
+    await for (var steam in _firestore.collection("messages").snapshots()) {
+      for (var mess in steam.documents) {
+        print(mess.data);
+      }
     }
   }
 
@@ -51,7 +62,8 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
               icon: Icon(Icons.close),
               onPressed: () {
-                getMessage();
+//                getMessage();
+                getSteamMessage();
                 //Implement logout functionality
 //                _auth.signOut();
 //                Navigator.pop(context);
@@ -65,6 +77,37 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            StreamBuilder(
+              stream: _firestore.collection("messages").snapshots(),
+              builder: (context, snapshots) {
+                if (!snapshots.hasData) {
+                  return (Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.lightBlueAccent,
+                    ),
+                  ));
+                }
+                final message = snapshots.data.documents;
+                List<MessageBubble> messageWidgets = [];
+                for (var mess in message) {
+//                  add those value into the empty list like array.map
+                  final messageText = mess.data['text'];
+                  final messageSender = mess.data['sender'];
+
+                  final messageWidget = MessageBubble(
+                    text: messageText,
+                    sender: messageSender,
+                  );
+                  messageWidgets.add(messageWidget);
+                }
+                return Expanded(
+                  child: ListView(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    children: messageWidgets,
+                  ),
+                );
+              },
+            ),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
@@ -72,6 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
+                      controller: messageTextController,
                       onChanged: (value) {
                         //Do something with the user input.
                         print(value);
@@ -82,10 +126,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   FlatButton(
                     onPressed: () {
+                      messageTextController.clear();
                       //Implement send functionality.
-                      print("RENDER TEXT WHILE SENDING");
-                      print(chatText);
-                      print(_firestore);
                       _firestore
                           .collection("messages")
                           .add({"text": chatText, "sender": logginUser.email});
@@ -100,6 +142,44 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class MessageBubble extends StatelessWidget {
+  MessageBubble({this.text, this.sender});
+  final String text;
+  final String sender;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(10),
+      child: Material(
+        elevation: 10,
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.redAccent,
+        child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Text(
+                  "$sender",
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "$text ",
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ],
+            )),
       ),
     );
   }
