@@ -10,11 +10,18 @@ class TodoListTiles extends StatelessWidget {
   final bool isCheck;
   final String title;
   final Function handleCheck;
+  final Function longPressCallback;
 
-  TodoListTiles({this.isCheck, this.title, this.handleCheck});
+  TodoListTiles({
+    this.isCheck,
+    this.title,
+    this.handleCheck,
+    this.longPressCallback,
+  });
   @override
   Widget build(BuildContext context) {
     return ListTile(
+        onLongPress: longPressCallback,
         title: Text("$title",
             style: TextStyle(
               decoration: isCheck ? TextDecoration.lineThrough : null,
@@ -23,7 +30,6 @@ class TodoListTiles extends StatelessWidget {
           onChanged: handleCheck,
           value: isCheck,
         ));
-    ;
   }
 }
 

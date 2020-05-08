@@ -4,6 +4,8 @@
 // Project todoey
 // ************************
 import "package:flutter/material.dart";
+import "package:provider/provider.dart";
+import "../modals/tasks_data.dart";
 
 class CreateTodo extends StatefulWidget {
   final Function handleAddNewTodo;
@@ -50,8 +52,8 @@ class _CreateTodoState extends State<CreateTodo> {
             FlatButton(
               color: Colors.redAccent,
               onPressed: () {
-                print(todo);
-                widget.handleAddNewTodo(todo);
+                Provider.of<TaskData>(context).addTasks(todo);
+                Navigator.pop(context);
               },
               child: Text(
                 "Add",

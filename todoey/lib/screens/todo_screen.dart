@@ -9,6 +9,8 @@ import "package:flutter/material.dart";
 import "../components/todo_list_view.dart";
 import "./create_todo_modal.dart";
 import "../modals/tasks.dart";
+import "package:provider/provider.dart";
+import "../modals/tasks_data.dart";
 
 class TodoScreen extends StatefulWidget {
   static String id = "todo_screen";
@@ -19,9 +21,9 @@ class TodoScreen extends StatefulWidget {
 class _TodoScreenState extends State<TodoScreen> {
   void handleAddTodo(String todo) {
     print("hi");
-    setState(() {
-      tasks.add(Task(name: todo));
-    });
+//    setState(() {
+//      tasks.add(Task(name: todo));
+//    });
     Navigator.pop(context);
   }
 
@@ -73,7 +75,7 @@ class _TodoScreenState extends State<TodoScreen> {
                         color: Colors.white),
                   ),
                   Text(
-                    "${tasks.length} Tasks",
+                    "${Provider.of<TaskData>(context).taskCount} Tasks",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )
@@ -87,9 +89,7 @@ class _TodoScreenState extends State<TodoScreen> {
                     color: Colors.white,
                     borderRadius:
                         BorderRadius.only(topLeft: Radius.circular(30))),
-                child: TodoListView(
-                  tasks: tasks,
-                ),
+                child: TodoListView(),
               ),
             )
           ],
