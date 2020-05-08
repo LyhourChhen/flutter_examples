@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1025470555035",
+    "firebase_url": "https://flashchat-flutter-demo-learn.firebaseio.com",
+    "project_id": "flashchat-flutter-demo-learn",
+    "storage_bucket": "flashchat-flutter-demo-learn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025470555035:android:8ec7ab81d7c50bb723773e",
+        "android_client_info": {
+          "package_name": "co.lyhourchhen.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1025470555035-6699615t2hhh52udu0i84fttsiu7a0jh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnrpEnBe-XVck_DcB5NpJgcwXUI7mHE2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1025470555035-6699615t2hhh52udu0i84fttsiu7a0jh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
