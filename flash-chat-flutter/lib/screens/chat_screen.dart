@@ -87,21 +87,25 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   ));
                 }
-                final message = snapshots.data.documents;
+                final message = snapshots.data.documents.reversed;
                 List<MessageBubble> messageWidgets = [];
                 for (var mess in message) {
 //                  add those value into the empty list like array.map
                   final messageText = mess.data['text'];
                   final messageSender = mess.data['sender'];
 
+                  final currentUser = logginUser.email == messageSender;
+
                   final messageWidget = MessageBubble(
                     text: messageText,
                     sender: messageSender,
+                    isMe: currentUser,
                   );
                   messageWidgets.add(messageWidget);
                 }
                 return Expanded(
                   child: ListView(
+                    reverse: true,
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     children: messageWidgets,
                   ),
@@ -148,9 +152,10 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class MessageBubble extends StatelessWidget {
-  MessageBubble({this.text, this.sender});
+  MessageBubble({this.text, this.sender, this.isMe});
   final String text;
   final String sender;
+  final bool isMe;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -158,11 +163,12 @@ class MessageBubble extends StatelessWidget {
       child: Material(
         elevation: 10,
         borderRadius: BorderRadius.circular(10),
-        color: Colors.redAccent,
+        color: isMe ? Colors.redAccent : Colors.amber,
         child: Padding(
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment:
+                  isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   "$sender",
