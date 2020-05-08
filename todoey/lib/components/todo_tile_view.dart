@@ -6,46 +6,66 @@
 
 import "package:flutter/material.dart";
 
-class TodoListTiles extends StatefulWidget {
-  @override
-  _TodoListTilesState createState() => _TodoListTilesState();
-}
+class TodoListTiles extends StatelessWidget {
+  final bool isCheck;
+  final String title;
+  final Function handleCheck;
 
-class _TodoListTilesState extends State<TodoListTiles> {
-  bool isCheck = true;
-
-  void handleCheck(value) {
-    print("click me");
-    setState(() {
-      isCheck = !isCheck;
-    });
-  }
-
+  TodoListTiles({this.isCheck, this.title, this.handleCheck});
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text("Finished Flutter Course on Udemy",
-          style: TextStyle(
-            decoration: isCheck ? TextDecoration.lineThrough : null,
-          )),
-      trailing: MyCheckbox(
-        checkboxstate: isCheck,
-        handleCheck: handleCheck,
-      ),
-    );
+        title: Text("$title",
+            style: TextStyle(
+              decoration: isCheck ? TextDecoration.lineThrough : null,
+            )),
+        trailing: Checkbox(
+          onChanged: handleCheck,
+          value: isCheck,
+        ));
+    ;
   }
 }
 
-class MyCheckbox extends StatelessWidget {
-  MyCheckbox({this.checkboxstate, this.handleCheck});
-  final bool checkboxstate;
-  final Function handleCheck;
+//class TodoListTiles extends StatefulWidget {
+//  @override
+//  _TodoListTilesState createState() => _TodoListTilesState();
+//}
+//
+//class _TodoListTilesState extends State<TodoListTiles> {
+//  bool isCheck = true;
+//
+//  void handleCheck(value) {
+//    print("click me");
+//    setState(() {
+//      isCheck = !isCheck;
+//    });
+//  }
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    return ListTile(
+//        title: Text("Finished Flutter Course on Udemy",
+//            style: TextStyle(
+//              decoration: isCheck ? TextDecoration.lineThrough : null,
+//            )),
+//        trailing: Checkbox(
+////        onChanged: ,
+//          value: isCheck,
+//        ));
+//  }
+//}
 
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      value: checkboxstate,
-      onChanged: handleCheck,
-    );
-  }
-}
+//class MyCheckbox extends StatelessWidget {
+//  MyCheckbox({this.checkboxstate, this.handleCheck});
+//  final bool checkboxstate;
+//  final Function handleCheck;
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    return Checkbox(
+//      value: checkboxstate,
+//      onChanged: handleCheck,
+//    );
+//  }
+//}
