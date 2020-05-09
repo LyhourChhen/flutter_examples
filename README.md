@@ -35,4 +35,4 @@
 ### Other
 - [Course App Template](https://github.com/londonappbrewery/Flutter-Course-Resources) - Source of Courses Template.
 - [Roadmap](https://github.com/olexale/flutter_roadmap) - Roadmap to become Flutter Developer.
-
+- [awesome-flutter](https://github.com/Solido/awesome-flutter) - everything research about flutter is here right away.
