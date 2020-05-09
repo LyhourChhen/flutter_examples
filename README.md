@@ -5,12 +5,18 @@
 |NO|Name|Description|Aim|
 |--|--|--|--|
 |1|I am Rich|The app which built to show you are extreamly rich.|Understand how basic layout with flutter is and also guiding to flutter project struture, working with assets.|
-|2|I am Poor|The same as rich just Poor|Remake the rich project into the poor once|
+|2|I am Poor()|The same as rich just Poor|Remake the rich project into the poor once|
 |3|Mi Card|The app to show personal Card|Understand how layout working in deep, working with custom font, use some of the widget like profile, card, pedding, row, center, column, text style.|
 |4|Dicc App|Roll the dice app|Unserstand about event handler in flutter like `onpress`, and intro into the basic of state in flutter like definition of stateless and statefull, minipulate the state like setState.
 |5|magic-8-ball|Roll the 8 magic ball game|Practise the same the the dicc app.|
 |6|Xelophone|Xelophone app which click to play sound|Understand about the third party use, like audio play, contruct method in flutter|
-
+|7|Bmi calculator|Calculate the avg weight of each person|Navigate between screen, Custom theme of the widget, resuable widget,Calculate functionality.
+|8|Clima|Show the weather in current location|Use library to access the native code, acess to https, retrive https api and handle it
+|9| Bitcoin ticker|Value of Bitcoin equal to currency| Retrive http from server, function to display equal currency. select view both ios and android use platform `io` 
+|10|Flash-chat|group chat real time.| using `firebase` to make auth, add to server, retirve back
+|11|quizzler|quiz app|`if` `else` statement
+|12|flutter-with graphql()|graphql|`query`, `mutation`, `subscription `example with graphql.
+|13|todoey|todo app | intro into `state-management` `provider`, `callback state` back
 
 ### More Example found ! 
 - [Briefly-sample-flutter](https://www.flutterbyexample.com/) - Flutter briefly sample (Path to learn flutter and example of verious topic gonna use like : `http` `state-management`).
