@@ -25,6 +25,7 @@
 - [Flutter Offical Sample Repo](https://github.com/flutter/samples) - Sample build by offical flutter team.
 -  [Ecommerce-flutter](https://github.com/OmarHatem28/yala_mazzad) - sample project of ecmmerce via flutter.
 -  [Beautiful Flutter](https://github.com/mitesh77/Best-Flutter-UI-Templates) - Flutter template so beautiful.
+- [loan app](https://github.com/Shubham-Narkhede/loan_app?fbclid=IwAR0gaqZUuXq6H8tkKZ5oY7ooJ-kAfZECqsVUytPe1GPnhAQ1mcRkKcwg95A) - Loan app build with flutter.
 
 
 ### Dart Code: `Example`
